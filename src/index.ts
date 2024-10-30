@@ -4,7 +4,7 @@ import axios from 'axios';
 import { SocialMediaDownloader } from './core/downloader';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // YouTube video download endpoint
 app.get('/download', async (req: Request, res: Response) => {

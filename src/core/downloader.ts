@@ -38,8 +38,8 @@ class SocialMediaDownloader {
     if (!this.browser) {
       this.browser = await puppeteer.launch({
         // headless: "shell",
-        // args: ['--no-sandbox', '--disable-setuid-sandbox']
-        headless: false
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: true
       });
     }
     return this.browser;
