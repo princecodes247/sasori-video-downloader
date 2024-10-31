@@ -117,7 +117,7 @@ class SocialMediaDownloader {
       await page.click('button[type="submit"]');
       
       // Wait for video URL to appear
-      await page.waitForSelector('video', { timeout: 60000 });
+      await page.waitForSelector('video', { timeout: 30000 });
       
       // Get highest quality video URL
       const videoUrl = await page.evaluate(() => {
@@ -201,8 +201,6 @@ class SocialMediaDownloader {
             if (!platformInfo.isValid) {
               throw new Error('Unsupported platform or invalid URL format.');
             }
-        
-
               switch (platformInfo.platform) {
                 case 'youtube':
                   return await this.downloadYouTubeVideo(url);

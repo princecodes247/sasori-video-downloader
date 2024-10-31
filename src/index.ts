@@ -12,7 +12,7 @@ app.get('/download', async (req: Request, res: Response) => {
   const downloader = new SocialMediaDownloader();
 
   try {
-    const videoInfo = await downloader.downloadVideo('https://x.com/jh3yy/status/1851106664235061379?s=46');
+    const videoInfo = await downloader.downloadVideo(videoUrl);
     console.log('Video download completed:', videoInfo);
 
     res.header('Content-Disposition', `attachment; filename="${videoInfo.outputPath}"`);
