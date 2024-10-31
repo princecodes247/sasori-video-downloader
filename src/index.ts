@@ -20,7 +20,7 @@ app.get('/download', async (req: Request, res: Response) => {
     res.redirect(videoInfo.videoUrl);
   } catch (error) {
     console.log({error})
-    res.status(500).json({ error: 'Failed to download YouTube video' });
+    res.status(500).json({ error: 'Failed to download video', log: error });
   }
 });
 
