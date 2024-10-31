@@ -101,13 +101,13 @@ class SocialMediaDownloader {
   }
 
   async downloadTwitterVideo(tweetUrl: string): Promise<VideoInfo> {
-    try {
+
       const browser = await this.initBrowser();
       const page = await browser.newPage();
       
       // Use a third-party Twitter video downloader service
       await page.goto('https://twitsave.com/', { waitUntil: 'networkidle0' });
-      
+      console.log("gone to page")
       // Find input field and submit button
     //   await page.evaluate((url) => { document.querySelector('input[name="sf_url"]').value = url; }, tweetUrl);
     await page.type('input[name="url"]', tweetUrl);
@@ -115,7 +115,7 @@ class SocialMediaDownloader {
       await page.click('button[type="submit"]');
       
       // Wait for video URL to appear
-      await page.waitForSelector('video', { timeout: 30000 });
+      await page.waitForSelector('video', { timeout: 60000 });
       
       // Get highest quality video URL
       const videoUrl = await page.evaluate(() => {
@@ -143,9 +143,7 @@ class SocialMediaDownloader {
         url: tweetUrl,
         platform: 'twitter'
       };
-    } catch (error: any) {
-      throw new Error(`Failed to download Twitter video: ${error.message}`);
-    }
+   
   }
 
   async downloadInstagramVideo(postUrl: string): Promise<VideoInfo> {
